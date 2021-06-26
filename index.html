@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Chess</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/pieces/wn.svg">
+</head>
+<body>
+    <div class="container">
+        <div class="score" style="color: white; text-align: right; width: 100px;">White score 0</div>
+        <div class="game">
+            <div class="timer timeblack">
+                <div class="material materialblack">
+                    <div class="pawn">
+
+                    </div>
+                    <div class="rook">
+
+                    </div>
+                    <div class="knight">
+
+                    </div>
+                    <div class="bishop">
+
+                    </div>
+                    <div class="queen">
+
+                    </div>
+                </div>
+            </div>
+            <div class="board">
+                
+            </div>
+            <div class="timer timewhite">
+                <div class="material materialwhite">
+                    <div class="pawn">
+                        
+                    </div>
+                    <div class="rook">
+                        
+                    </div>
+                    <div class="knight">
+
+                    </div>
+                    <div class="bishop">
+
+                    </div>
+                    <div class="queen">
+
+                    </div>
+                </div>
+            </div>
+            <div class="info checkmate">
+                <p>Checkmate</p>
+                <button onclick="generateInitialPosition()">Restart</button>
+                <button onclick="closecheck()">Close</button>
+            </div>
+            <div class="info puzzle">
+                <p>Puzzle solved!</p>
+                <button onclick="selectpuzzle()">New puzzle</button>
+                <button onclick="closecheck()">Close</button>
+            </div>
+        </div>
+        <div class="play">
+            <button class="invertboard">Flip board</button>
+            <form>
+                <label for="promote">Promote to:</label>
+                <select name="promote" class="promote" onchange="selectPromotion()">
+                    <option value="queen">Queen</option>
+                    <option value="rook">Rook</option>
+                    <option value="knight">Knight</option>
+                    <option value="bishop">Bishop</option>
+                </select>
+            </form>
+            <div class="gamemode">
+                <p>Select Gamemode</p>
+                <p class="current">Current: Player Vs. Stockfish</p>
+                <div class="btnsgamemode">
+                    <button class="playerselect" onclick="selectplayer()">Player Vs. Player</button>
+                    <button class="stockfishselect selected" onclick="selectai()">Player Vs. Stockfish</button>
+                    <button class="stockfishxselect" onclick="selectstockfish()">Stockfish Vs. Stockfish</button>
+                    <button class="puzzleselect" onclick="selectpuzzle()">Puzzle</button>
+                    <p class="ppuzzletheme"></p>
+                    <a href="" class="ppuzzle"></a>
+                </div>
+            </div>
+            <div class="level">
+                <p>Stockfish thinking time</p>
+                <form>
+                    <input type="range" value="1000" class="lvlinput" min="1" max="10000">
+                    <p class="pslider">1s</p>
+                </form>
+            </div>
+            <div class="startgame">
+                <p>Select color</p>
+                <p class="current">Current: white</p>
+                <div class="btns">
+                    <button class="whiteselect selected" onclick="selectwhite()">White</button>
+                    <button class="blackselect" onclick="selectblack()">Black</button>
+                </div>
+                <button class="startgame" onclick="play()">Play!</button>
+                <button class="startgame" onclick="generateInitialPosition();playSound('over');document.querySelector('a.ppuzzle').innerText='';document.querySelector('a.ppuzzle').href =''">Stop</button>
+            </div>
+            <div class="loadgame">
+                <p>Load game from FEN string</p>
+                <div class="load">
+                    <input type="text" placeholder="FEN" class="feninput">
+                    <button onclick="loadGame()">Load</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="jquery.csv.js"></script>
+	<script src="puzzleDataBase.js"></script>
+    <script src="stockfish.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

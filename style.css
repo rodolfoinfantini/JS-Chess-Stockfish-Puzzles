@@ -1,0 +1,634 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+*{
+    font-family: 'Noto Sans JP';
+    --width: 720px;
+}
+label{
+    color: #fff;
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+    background: rgb(26,26,26);
+}
+
+button.selected{
+    background-color: rgb(140,140,140);
+    cursor: default!important;
+}
+
+.container{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ppuzzle, .ppuzzletheme{
+    font-size: 15px;
+    color: rgb(162, 162, 255);
+    width: 95%;
+    margin-bottom: -25px;
+    margin-top: -5px!important;
+}
+
+.ppuzzletheme{
+    color: white;
+}
+
+@media (max-width: 1150px){
+    .container{
+        flex-direction: column!important;
+        align-items: center;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}
+
+.play{
+    width: 400px;
+    height: fit-content;
+    max-height: 95vh;
+    background: #333;
+    margin-left: 20px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow-y: auto;
+}
+
+.play button:not(.selected):hover{
+    background-color: rgb(200,200,200);
+}
+
+.play button:not(.selected):active{
+    background-color: rgb(220,220,220);
+}
+
+.play button{
+    border: none;
+    cursor: pointer;
+    margin-top: 1px;
+}
+
+.play .invertboard{
+    font-size: 20px;
+}
+
+.play div{
+    color: white;
+    height: fit-content;
+    font-size: 20px;
+    background-color: rgb(70,70,70);
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.game .info{
+    position: absolute;
+    opacity: 0.98;
+    width: 400px;
+    height: 600px;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: rgb(160,70,70); */
+    background-color: rgb(51,51,51);
+    display: none;
+    flex-direction: column;
+    font-size: 50px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6);
+    border: 7px solid white;
+    color: white;
+}
+
+.game .info.puzzle{
+    background-color: rgb(10, 95, 10);
+}
+
+.game .info p{
+    margin-top: 80px;
+}
+
+.game .info button{
+    font-size: 30px;
+    width: fit-content;
+    padding: 15px 25px;
+    margin: 5px auto;
+}
+
+.play .gamemode .btnsgamemode{
+    height: fit-content;
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    padding: 0;
+}
+
+.play .gamemode p{
+    margin: 0;
+    padding: 0;
+}
+
+.play .gamemode button{
+    font-size: 20px;
+}
+
+.play .startgame .btns{
+    height: fit-content;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+}
+
+.play .startgame button{
+    font-size: 20px;
+}
+
+.play .startgame button.startgame{
+    margin-top: 10px;
+}
+
+.play .startgame p{
+    margin: 0;
+    padding: 0;
+}
+
+.play .loadgame .load{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.play .loadgame .load *{
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.level p{
+    padding: 0;
+    margin-top: 0;
+    height: fit-content;
+}
+
+.level form{
+    display: flex;
+    height: 15px;
+    width: 300px;
+}
+
+.level form input{
+    height: 15px;
+    width: 100%;
+}
+
+.level .pslider{
+    width: 60px!important;
+    text-align: left;
+}
+
+
+
+
+
+.game{
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto 0;
+}
+
+.timer{
+    width: 100%; height: fit-content;
+    display: flex;
+}
+
+.material{
+    display: flex;
+    margin: auto auto 5px 5px;
+    width: auto; height: 50px;
+    background-color: rgb(80,80,80);
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.material.materialwhite{
+    margin: 5px auto auto 5px;
+}
+
+.material div{
+    width: fit-content;
+    height: fit-content;
+    margin: auto 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.material .m{
+    border: none;
+    margin: 0 -7px;
+}
+
+.material .queen .m{
+    margin: 0;
+}
+
+.material div div{
+    width: 35px!important;
+    height: 40px!important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.board{
+    background-image: url('img/board_positions.png');
+    background-size: 100% 100%;
+    width: var(--width);
+    height: var(--width);
+    margin: auto;
+    border-radius: 5px;
+    user-select: none;
+    position: relative;
+}
+
+.board.inverted{
+    transform: rotate(180deg);
+    background-image: url('img/board_positions_inverted.png');
+}
+
+.piece{
+    position: absolute;
+    width: 12.5%;
+    height: 12.5%;
+    cursor: grab;
+    z-index: 1;
+}
+
+.piece::after{
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.board.inverted .piece::after{
+    transform: rotate(180deg);
+}
+
+.piece:hover{
+    z-index: 3;
+}
+
+.piece:active{
+    cursor: grabbing;
+}
+
+.pointers{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    opacity: 0.7;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.moves{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    opacity: 0.4;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.pointer{
+    position: absolute;
+    width: 12.5%;
+    height: 12.5%;
+    background-size: 100% 100%;
+    z-index: 4!important;
+    cursor: pointer;
+}
+
+.pointer.tile{
+    background-image: url('img/pointer.png');
+}
+
+.pointer.capture{
+    background-image: url('img/pointerpiece2.png');
+}
+
+.pointer.move{
+    background-color: yellow;
+}
+
+
+.check{
+    background-image: url('img/check.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.m.wp{
+    background-image: url('img/pieces/wp.svg');
+}
+.m.wr{
+    background-image: url('img/pieces/wr.svg');
+}
+.m.wn{
+    background-image: url('img/pieces/wn.svg');
+}
+.m.wb{
+    background-image: url('img/pieces/wb.svg');
+}
+.m.wq{
+    background-image: url('img/pieces/wq.svg');
+}
+
+.m.bp{
+    background-image: url('img/pieces/bp.svg');
+}
+.m.br{
+    background-image: url('img/pieces/br.svg');
+}
+.m.bn{
+    background-image: url('img/pieces/bn.svg');
+}
+.m.bb{
+    background-image: url('img/pieces/bb.svg');
+}
+.m.bq{
+    background-image: url('img/pieces/bq.svg');
+}
+
+
+
+.br::after{
+    background-image: url('img/pieces/br.svg');
+}
+.bn::after{
+    background-image: url('img/pieces/bn.svg');
+}
+.bb::after{
+    background-image: url('img/pieces/bb.svg');
+}
+.bq::after{
+    background-image: url('img/pieces/bq.svg');
+}
+.bk::after{
+    background-image: url('img/pieces/bk.svg');
+}
+.bp::after{
+    background-image: url('img/pieces/bp.svg');
+}
+
+.wr::after{
+    background-image: url('img/pieces/wr.svg');
+}
+.wn::after{
+    background-image: url('img/pieces/wn.svg');
+}
+.wb::after{
+    background-image: url('img/pieces/wb.svg');
+}
+.wq::after{
+    background-image: url('img/pieces/wq.svg');
+}
+.wk::after{
+    background-image: url('img/pieces/wk.svg');
+}
+.wp::after{
+    background-image: url('img/pieces/wp.svg');
+}
+
+.square-00{
+    transform: translate(0%, 0%);
+}
+.square-01{
+    transform: translate(100%, 0%);
+}
+.square-02{
+    transform: translate(200%, 0%);
+}
+.square-03{
+    transform: translate(300%, 0%);
+}
+.square-04{
+    transform: translate(400%, 0%);
+}
+.square-05{
+    transform: translate(500%, 0%);
+}
+.square-06{
+    transform: translate(600%, 0%);
+}
+.square-07{
+    transform: translate(700%, 0%);
+}
+
+.square-10{
+    transform: translate(0%, 100%);
+}
+.square-11{
+    transform: translate(100%, 100%);
+}
+.square-12{
+    transform: translate(200%, 100%);
+}
+.square-13{
+    transform: translate(300%, 100%);
+}
+.square-14{
+    transform: translate(400%, 100%);
+}
+.square-15{
+    transform: translate(500%, 100%);
+}
+.square-16{
+    transform: translate(600%, 100%);
+}
+.square-17{
+    transform: translate(700%, 100%);
+}
+
+.square-20{
+    transform: translate(0%, 200%);
+}
+.square-21{
+    transform: translate(100%, 200%);
+}
+.square-22{
+    transform: translate(200%, 200%);
+}
+.square-23{
+    transform: translate(300%, 200%);
+}
+.square-24{
+    transform: translate(400%, 200%);
+}
+.square-25{
+    transform: translate(500%, 200%);
+}
+.square-26{
+    transform: translate(600%, 200%);
+}
+.square-27{
+    transform: translate(700%, 200%);
+}
+
+.square-30{
+    transform: translate(0%, 300%);
+}
+.square-31{
+    transform: translate(100%, 300%);
+}
+.square-32{
+    transform: translate(200%, 300%);
+}
+.square-33{
+    transform: translate(300%, 300%);
+}
+.square-34{
+    transform: translate(400%, 300%);
+}
+.square-35{
+    transform: translate(500%, 300%);
+}
+.square-36{
+    transform: translate(600%, 300%);
+}
+.square-37{
+    transform: translate(700%, 300%);
+}
+
+.square-40{
+    transform: translate(0%, 400%);
+}
+.square-41{
+    transform: translate(100%, 400%);
+}
+.square-42{
+    transform: translate(200%, 400%);
+}
+.square-43{
+    transform: translate(300%, 400%);
+}
+.square-44{
+    transform: translate(400%, 400%);
+}
+.square-45{
+    transform: translate(500%, 400%);
+}
+.square-46{
+    transform: translate(600%, 400%);
+}
+.square-47{
+    transform: translate(700%, 400%);
+}
+
+.square-50{
+    transform: translate(0%, 500%);
+}
+.square-51{
+    transform: translate(100%, 500%);
+}
+.square-52{
+    transform: translate(200%, 500%);
+}
+.square-53{
+    transform: translate(300%, 500%);
+}
+.square-54{
+    transform: translate(400%, 500%);
+}
+.square-55{
+    transform: translate(500%, 500%);
+}
+.square-56{
+    transform: translate(600%, 500%);
+}
+.square-57{
+    transform: translate(700%, 500%);
+}
+
+.square-60{
+    transform: translate(0%, 600%);
+}
+.square-61{
+    transform: translate(100%, 600%);
+}
+.square-62{
+    transform: translate(200%, 600%);
+}
+.square-63{
+    transform: translate(300%, 600%);
+}
+.square-64{
+    transform: translate(400%, 600%);
+}
+.square-65{
+    transform: translate(500%, 600%);
+}
+.square-66{
+    transform: translate(600%, 600%);
+}
+.square-67{
+    transform: translate(700%, 600%);
+}
+
+.square-70{
+    transform: translate(0%, 700%);
+}
+.square-71{
+    transform: translate(100%, 700%);
+}
+.square-72{
+    transform: translate(200%, 700%);
+}
+.square-73{
+    transform: translate(300%, 700%);
+}
+.square-74{
+    transform: translate(400%, 700%);
+}
+.square-75{
+    transform: translate(500%, 700%);
+}
+.square-76{
+    transform: translate(600%, 700%);
+}
+.square-77{
+    transform: translate(700%, 700%);
+}
