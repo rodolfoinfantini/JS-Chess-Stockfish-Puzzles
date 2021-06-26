@@ -4,6 +4,30 @@
     font-family: 'Noto Sans JP';
     --width: 720px;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #4b4b4b;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(194, 194, 194);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(223, 223, 223);
+}
+
 label{
     color: #fff;
 }

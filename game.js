@@ -10,6 +10,7 @@ var possibleMoves = []
 var enPassant = "-"
 var attackedTiles = []
 var positionHistory = []
+var movesHistory = "position startpos moves "
 var whiteMaterialCounter = {pawn:8,rook:2,knight:2,bishop:2,queen:1}
 var blackMaterialCounter = {pawn:8,rook:2,knight:2,bishop:2,queen:1}
 var stockfish = STOCKFISH()
@@ -205,6 +206,7 @@ function loadGame(){
         positions = newPos
         isLoaded = true
         canselect = true
+        movesHistory = `position fen ${fenInput.value} moves `
         renderPieces()
     }
 }
@@ -482,6 +484,7 @@ stockfish.onmessage = function(event) {
 function generateInitialPosition(){
     stockfish.postMessage("ucinewgame")
     stockfish.postMessage("position startpos")
+    movesHistory = "position startpos moves "
     /* analysis.postMessage("ucinewgame")
     analysis.postMessage("position startpos")
     analysis.postMessage("go infinite") */
@@ -1181,9 +1184,12 @@ function move(from,to){
         }
 
         //AI
+        /*
         var fenString
         fenString = generateFENString()
-        stockfish.postMessage(`position fen ${fenString} moves ${tileToString(from,to)}`)
+        stockfish.postMessage(`position fen ${fenString} moves ${tileToString(from,to)}`)*/
+        movesHistory += `${tileToString(from,to)} `
+        stockfish.postMessage(`${movesHistory}`)
         if(!puzzle){
             if(aixai && !puzzle){
                 aiMove()
