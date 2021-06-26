@@ -126,7 +126,7 @@ function generateNewPuzzle(){
     console.log(puzzlesArray[randomIndex])
     document.querySelector("a.ppuzzle").innerText = puzzlesArray[randomIndex][8]
     document.querySelector("a.ppuzzle").href = puzzlesArray[randomIndex][8]
-    document.querySelector("p.ppuzzletheme").innerText = `Themes: ${puzzlesArray[randomIndex][7]}`
+    document.querySelector("p.ppuzzletheme").innerHTML = `<b>Themes:</b> <u>${puzzlesArray[randomIndex][7]}</u><br><b>Rating:</b> <u>${puzzlesArray[randomIndex][3]}<u>`
     var firstMove = puzzleCorretMoves[0]
     move(firstMove.split("")[0] + firstMove.split("")[1], firstMove.split("")[2] + firstMove.split("")[3])
     puzzleMoveControl++
@@ -895,16 +895,24 @@ function move(from,to){
             if(puzzlePromoteToIndex != null){
                 if(puzzleMoveControl == puzzlePromoteToIndex){
                     if(puzzlePromoteTo != promoteTo){
-                        clickedPiece.style = ""
-                        selectedPiece.style = ""
+                        try{
+                            clickedPiece.style = ""
+                            selectedPiece.style = ""
+                        }catch(e){
+
+                        }
                         return
                     }
                 }
             }
             puzzleMoveControl++
         }else{
-            clickedPiece.style = ""
-            selectedPiece.style = ""
+            try{
+                clickedPiece.style = ""
+                selectedPiece.style = ""
+            }catch(e){
+
+            }
             return
         }
     }

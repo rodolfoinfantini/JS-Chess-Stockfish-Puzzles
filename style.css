@@ -83,6 +83,10 @@ button.selected{
     margin-top: 1px;
 }
 
+button{
+    cursor: pointer;
+}
+
 .play .invertboard{
     font-size: 20px;
 }
