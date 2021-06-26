@@ -104,7 +104,7 @@ button.selected{
 
 .game .info{
     position: absolute;
-    opacity: 0.98;
+    opacity: 0.96;
     width: 400px;
     height: 600px;
     z-index: 10000;

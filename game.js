@@ -46,12 +46,15 @@ var puzzleCorretMoves = []
 var puzzleMoveControl = 0
 var url = "https://api.chess.com/pub/puzzle/random"
 var request = new XMLHttpRequest()*/
-
+var puzzlePromoteTo = "q"
+var puzzlePromoteToIndex = null
 function selectpuzzle(){
     if(canselect){
         isai = false
         aixai = false
         puzzle = true
+        puzzlePromoteToIndex = null
+        puzzlePromoteTo = "q"
         document.querySelector(".gamemode .current").innerHTML = "Current: Puzzle"
         document.querySelector(".gamemode .playerselect").classList.remove("selected")
         document.querySelector(".gamemode .stockfishselect").classList.remove("selected")
@@ -95,7 +98,13 @@ function generateNewPuzzle(){
     positions = fenToArray(puzzlesArray[randomIndex][1])
     puzzleCorretMoves = puzzlesArray[randomIndex][2].split(" ")
     console.log(puzzleCorretMoves)
+    puzzlePromoteToIndex = null
+    puzzlePromoteTo = "q"
     for(let i = 0; i < puzzleCorretMoves.length; i++){
+        if(puzzleCorretMoves[i].length == 5){
+            puzzlePromoteToIndex = i
+            puzzlePromoteTo == puzzleCorretMoves[i].split("")[4]
+        }
         puzzleCorretMoves[i] = stringToTile(puzzleCorretMoves[i])
     }
     if(turn == "w"){
@@ -119,8 +128,6 @@ function generateNewPuzzle(){
     document.querySelector("a.ppuzzle").href = puzzlesArray[randomIndex][8]
     document.querySelector("p.ppuzzletheme").innerText = `Themes: ${puzzlesArray[randomIndex][7]}`
     var firstMove = puzzleCorretMoves[0]
-    console.log(firstMove)
-    console.log(puzzleCorretMoves)
     move(firstMove.split("")[0] + firstMove.split("")[1], firstMove.split("")[2] + firstMove.split("")[3])
     puzzleMoveControl++
 }
@@ -882,6 +889,25 @@ function move(from,to){
             return
         }
     }
+    //PUZZLE MOVES
+    if(puzzle && turn == playercolor){
+        if(String(from) + String(to) == puzzleCorretMoves[puzzleMoveControl]){
+            if(puzzlePromoteToIndex != null){
+                if(puzzleMoveControl == puzzlePromoteToIndex){
+                    if(puzzlePromoteTo != promoteTo){
+                        clickedPiece.style = ""
+                        selectedPiece.style = ""
+                        return
+                    }
+                }
+            }
+            puzzleMoveControl++
+        }else{
+            clickedPiece.style = ""
+            selectedPiece.style = ""
+            return
+        }
+    }
 
     //CAPTURE
     var blackcaptured = false
@@ -1035,25 +1061,7 @@ function move(from,to){
         }
         promoteTo = selectPromote.value.split("")[0] == "k" ? "n" : selectPromote.value.split("")[0]
         
-        //PUZZLE MOVES
-        if(puzzle && turn == playercolor){
-            if(String(from) + String(to) == puzzleCorretMoves[puzzleMoveControl]){
-                puzzleMoveControl++
-            }else{
-                setPositions()
-                renderPieces()
-                clickedPiece = undefined
-                selectedPiece = undefined
-                if(whitecaptured){
-                    whiteCaptures[whiteCaptures.length - 1] = ""
-                }
-                renderCaptures()
-                if(hadWOO) canWOO = true
-                else if(hadWOOO) canWOOO = true
-                hadPuzzleMove = false
-                return
-            }
-        }
+        
 
         //TURN CHANGE
         if(turn == "w"){
@@ -1194,7 +1202,6 @@ function move(from,to){
             movFrom = String(puzzleCorretMoves[puzzleMoveControl].split("")[0]) + String(puzzleCorretMoves[puzzleMoveControl].split("")[1])
             movTo = String(puzzleCorretMoves[puzzleMoveControl].split("")[2]) + String(puzzleCorretMoves[puzzleMoveControl].split("")[3])
             puzzleMoveControl++
-            console.log(`moving to ${movFrom + movTo}`)
             move(movFrom, movTo)
             if(puzzleMoveControl >= puzzleCorretMoves.length){
                 document.querySelector(".info.puzzle").style.display = "flex"
