@@ -1,7 +1,6 @@
-# Chess-JS-2.0-Stockfish
-
-2.0 Javascript chess with STOCKFISH!
- * [Page to try it](https://sirvorak.github.io/Chess-JS-2.0-Stockfish/)
+# JS-Chess-Stockfish-Puzzles
+Javascript chess with STOCKFISH and PUZZLES FROM LICHESS!
+ * [Page to try it](https://sirvorak.github.io/JS-Chess-Stockfish-Puzzles/)
  * [Stockfish.js](http://github.com/nmrugg/stockfish.js)
  * You can load a position from FEN string
 
@@ -12,5 +11,5 @@
  * Pinned pieces
  * En Passant
  * Castle
- * Pawn promotion (only queen for now)
+ * Pawn promotion
  * [Multiplayer](https://github.com/SirVoRaK/Chess-JS-2.0-Multiplayer)
