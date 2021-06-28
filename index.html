@@ -83,6 +83,31 @@
                     <button class="stockfishselect selected" onclick="selectai()">Player Vs. Stockfish</button>
                     <button class="stockfishxselect" onclick="selectstockfish()">Stockfish Vs. Stockfish</button>
                     <button class="puzzleselect" onclick="selectpuzzle()">Puzzle</button>
+                    <form>
+                        <label for="filter">Theme filter:</label>
+                        <select name="filter" class="filter" onchange="changeFilter()">
+                            <option value="none">None</option>
+                            <option value="mate">Mate</option>
+                            <option value="fork">Fork</option>
+                            <option value="advantage">Advantage</option>
+                            <option value="middlegame">Middlegame</option>
+                            <option value="advancedPawn">Advanced Pawn</option>
+                            <option value="xRayAttack">xRay Attack</option>
+                            <option value="sacrifice">Sacrifice</option>
+                            <option value="opening">Opening</option>
+                            <option value="pin">Pin</option>
+                            <option value="oneMove">One Move</option>
+                        </select>
+                        <label for="ratingfilter">Rating filter:</label>
+                        <select name="ratingfilter" class="ratingfilter" onchange="changeFilter()">
+                            <option value="none">None</option>
+                            <option value="0-900">0-900</option>
+                            <option value="900-1200">900-1200</option>
+                            <option value="1200-1600">1200-1600</option>
+                            <option value="1600-2000">1600-2000</option>
+                            <option value="2000-4000">2000+</option>
+                        </select>
+                    </form>
                     <p class="ppuzzletheme"></p>
                     <a href="" class="ppuzzle"></a>
                 </div>

@@ -7,19 +7,19 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
     border-radius: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #4b4b4b;
+    background: #5a5a5a;
     border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(194, 194, 194);
+    background: rgb(182, 182, 182);
     border-radius: 5px;
 }
 
@@ -79,7 +79,7 @@ button.selected{
 .play{
     width: 400px;
     height: fit-content;
-    max-height: 95vh;
+    max-height: 98vh;
     background: #333;
     margin-left: 20px;
     border-radius: 5px;

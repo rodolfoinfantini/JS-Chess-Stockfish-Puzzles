@@ -38,7 +38,9 @@ var promoteTo = "q"
 var isBestNone = false
 
 //PUZZLE DATABASE
-var puzzlesArray = $.csv.toArrays(puzzlesCsv)
+var puzzlesDB = $.csv.toArrays(puzzlesCsv)
+var puzzlesArray = puzzlesDB
+var filteredPuzzlesArray = []
 
 
 //ANCHOR PUZZLE API
@@ -131,6 +133,37 @@ function generateNewPuzzle(){
     var firstMove = puzzleCorretMoves[0]
     move(firstMove.split("")[0] + firstMove.split("")[1], firstMove.split("")[2] + firstMove.split("")[3])
     puzzleMoveControl++
+}
+
+//PUZZLE FILTER
+var puzzleFilter = "none"
+var ratingFilter = "none"
+function changeFilter(){
+    puzzleFilter = document.querySelector("select.filter").value
+    ratingFilter = document.querySelector("select.ratingfilter").value
+    console.log(puzzleFilter, ratingFilter)
+    filteredPuzzlesArray = []
+    puzzlesArray = puzzlesDB
+    if(puzzleFilter === "none" && ratingFilter === "none") return
+    var ratingFrom = parseInt(ratingFilter.split("-")[0])
+    var ratingTo = parseInt(ratingFilter.split("-")[1])
+    for(let i = 0; i < puzzlesArray.length; i++){
+        if(ratingFilter === "none"){
+            if(String(puzzlesArray[i][7]).includes(puzzleFilter)){
+                filteredPuzzlesArray.push(puzzlesArray[i])
+            }
+        }else if(puzzleFilter === "none"){
+            if(parseInt(puzzlesArray[i][3]) > ratingFrom && parseInt(puzzlesArray[i][3]) < ratingTo){
+                filteredPuzzlesArray.push(puzzlesArray[i])
+            }
+        }else{
+            if(String(puzzlesArray[i][7]).includes(puzzleFilter) && parseInt(puzzlesArray[i][3]) > ratingFrom && parseInt(puzzlesArray[i][3]) < ratingTo){
+                filteredPuzzlesArray.push(puzzlesArray[i])
+            }
+        }
+    }
+    puzzlesArray = filteredPuzzlesArray
+    console.log(puzzlesArray.length)
 }
 
 //HTML ELEMENTS
