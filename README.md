@@ -3,7 +3,7 @@ Javascript chess with STOCKFISH and PUZZLES FROM LICHESS!
  * [Page to try it](https://sirvorak.github.io/JS-Chess-Stockfish-Puzzles/)
  * [Stockfish.js](http://github.com/nmrugg/stockfish.js)
  * You can load a position from FEN string
- * You can play more than 15000(expanding) puzzles from lichess Database
+ * You can play more than 18000(expanding) puzzles from lichess Database
 
 # Rules implemented
 
