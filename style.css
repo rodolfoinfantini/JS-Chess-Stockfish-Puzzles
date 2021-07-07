@@ -205,6 +205,28 @@ button{
     padding: 0;
 }
 
+button.playbtn{
+    background-color: #7FA650;
+    border-bottom: 5px solid #537133;
+    padding: 5px 30px;
+    font-size: 30px!important;
+    color: #fff;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,0.3);
+    transition: background-color, box-shadow 0.5s ease-in-out;
+    border-radius: 10px;
+    margin-top: -5px!important;
+}
+
+button.playbtn:hover{
+    background-color: #95BB4A!important;
+    box-shadow: 0 5px 20px 0 rgba(149,187,74,0.4);
+}
+
+button.playbtn:active{
+    border-bottom: 1px solid #537133;
+    transform: translateY(4px);
+}
+
 .play .loadgame .load{
     display: flex;
     flex-direction: row;
