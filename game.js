@@ -114,10 +114,12 @@ function generateNewPuzzle(){
         playercolor = "b"
         inverted = true
         board.classList.add('inverted')
+        document.querySelector(".game").classList.add('inverted')
     }else if(turn == "b"){
         playercolor = "w"
         inverted = false
         board.classList.remove('inverted')
+        document.querySelector(".game").classList.remove('inverted')
     }
     isLoaded = true
     puzzleMoveControl = 0
@@ -619,6 +621,7 @@ function selectwhite(){
         document.querySelector(".startgame .blackselect").classList.remove("selected")
         inverted = false
         board.classList.remove('inverted')
+        document.querySelector(".game").classList.remove('inverted')
     } 
 }
 
@@ -630,6 +633,7 @@ function selectblack(){
         document.querySelector(".startgame .whiteselect").classList.remove("selected")
         inverted = true
         board.classList.add('inverted')
+        document.querySelector(".game").classList.add('inverted')
     } 
 }
 
@@ -811,9 +815,11 @@ invertBTN.addEventListener('click',function(e){
     if(inverted){
         inverted = false
         board.classList.remove('inverted')
+        document.querySelector(".game").classList.remove('inverted')
     }else{
         inverted = true
         board.classList.add('inverted')
+        document.querySelector(".game").classList.add('inverted')
     }
 })
 
@@ -1467,7 +1473,7 @@ function mouseToTile(x, y){
     else if(y < width * 6) tile = inverted ? 2 : 5
     else if(y < width * 7) tile = inverted ? 1 : 6
     else if(y < width * 8) tile = inverted ? 0 : 7
-   
+
     if(x < width * 1) tile += inverted ? "7" : "0"
     else if(x < width * 2) tile += inverted ? "6" : "1"
     else if(x < width * 3) tile += inverted ? "5" : "2"
