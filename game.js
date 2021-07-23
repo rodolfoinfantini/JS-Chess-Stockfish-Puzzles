@@ -1975,3 +1975,9 @@ function attackedKing(x,y){
         }
     }
 }
+
+
+
+if(window.location.href.includes('autoStart=true')){
+    play()
+}
