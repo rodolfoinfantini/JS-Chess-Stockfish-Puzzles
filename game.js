@@ -38,9 +38,17 @@ var promoteTo = "q"
 var isBestNone = false
 
 //PUZZLE DATABASE
-var puzzlesDB = $.csv.toArrays(puzzlesCsv)
-var puzzlesArray = puzzlesDB
-var filteredPuzzlesArray = []
+// var puzzlesDB = $.csv.toArrays(puzzlesCsv)
+// var puzzlesArray = puzzlesDB
+// var filteredPuzzlesArray = []
+
+
+let puzzlesDB = puzzlesCsv.split('\n')
+for(let i = 0; i < puzzlesDB.length; i++) {
+    puzzlesDB[i] = puzzlesDB[i].split(',')
+}
+let puzzlesArray = puzzlesDB
+let filteredPuzzlesArray = []
 
 
 //ANCHOR PUZZLE API
