@@ -42,13 +42,15 @@ var isBestNone = false
 // var puzzlesArray = puzzlesDB
 // var filteredPuzzlesArray = []
 
-
+console.time('db')
 let puzzlesDB = puzzlesCsv.split('\n')
 for(let i = 0; i < puzzlesDB.length; i++) {
     puzzlesDB[i] = puzzlesDB[i].split(',')
 }
 let puzzlesArray = puzzlesDB
+console.timeEnd('db')
 let filteredPuzzlesArray = []
+console.log(puzzlesArray)
 
 
 //ANCHOR PUZZLE API
