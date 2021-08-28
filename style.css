@@ -231,6 +231,7 @@ button.playbtn:active{
     display: flex;
     flex-direction: row;
     gap: 5px;
+	align-items: stretch;
 }
 
 .play .loadgame .load *{
@@ -238,6 +239,14 @@ button.playbtn:active{
     border: none;
     padding: 5px 10px;
     outline: none;
+}
+
+.play .loadgame .load input{
+	width: 70%;
+}
+
+.play .loadgame .load button{
+	flex: 1;
 }
 
 .level p{
