@@ -276,12 +276,15 @@ button.playbtn:active{
 
 
 .game{
-    height: fit-content;
-    width: fit-content;
     display: flex;
     flex-direction: column;
     position: relative;
     margin: auto 0;
+    align-items: stretch;
+    width: 80vmin;
+    height: calc(80vmin + 110px);
+    max-width: var(--width);
+    max-height: calc(var(--width) + 110px);
 }
 
 .timer{
@@ -356,8 +359,9 @@ button.playbtn:active{
 .board{
     background-image: url('img/board_positions.png');
     background-size: 100% 100%;
-    width: var(--width);
-    height: var(--width);
+    width: 100%;
+    height: 100%;
+    flex: 1;
     margin: auto;
     border-radius: 5px;
     user-select: none;
